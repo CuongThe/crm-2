@@ -8,6 +8,18 @@
     },
     {
       "path": "./apps/crm-2"
+    },
+    {
+      "path": "./apps/api-e2e"
+    },
+    {
+      "path": "./apps/api"
+    },
+    {
+      "path": "./libs/shared/types"
+    },
+    {
+      "path": "./libs/web/data-access"
     }
   ]
 }

@@ -3,7 +3,16 @@
   "version": "0.0.1",
   "private": true,
   "nx": {
-    "sourceRoot": "apps/crm-2/src"
+    "sourceRoot": "apps/crm-2/src",
+    "targets": {
+      "serve": {
+        "executor": "nx:run-commands",
+        "options": {
+          "cwd": "apps/crm-2",
+          "command": "next dev"
+        }
+      }
+    }
   },
   "dependencies": {
     "next": "~16.1.6",

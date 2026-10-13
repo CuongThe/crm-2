@@ -17,12 +17,16 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@crm-2/shared-types": ["../../libs/shared/types/src/index.ts"],
+      "@crm-2/shared/types": ["../../libs/shared/types/src/index.ts"],
+      "@crm-2/data-access": ["../../libs/web/data-access/src/index.ts"],
+      "@crm-2/web/data-access": ["../../libs/web/data-access/src/index.ts"]
     },
-    "types": ["jest", "node"],
-    "outDir": "dist",
-    "rootDir": "src",
-    "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo"
+    "composite": false,
+    "declarationMap": false,
+    "emitDeclarationOnly": false,
+    "types": ["jest", "node"]
   },
   "include": [
     "src/**/*.ts",
@@ -46,5 +50,13 @@
     "eslint.config.js",
     "eslint.config.cjs",
     "eslint.config.mjs"
+  ],
+  "references": [
+    {
+      "path": "../../libs/shared/types"
+    },
+    {
+      "path": "../../libs/web/data-access"
+    }
   ]
 }
