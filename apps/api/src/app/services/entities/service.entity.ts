@@ -12,13 +12,13 @@ import { Appointment } from '../../appointments/entities/appointment.entity';
 @Entity('services')
 export class Service {
   @PrimaryGeneratedColumn({ type: 'bigint', unsigned: true })
-  id: string;
+  id!: string;
 
   @Column({ type: 'varchar', length: 150 })
-  name: string;
+  name!: string;
 
   @Column({ type: 'text', nullable: true })
-  description: string | null;
+  description!: string | null;
 
   @Column({
     type: 'decimal',
@@ -26,7 +26,7 @@ export class Service {
     scale: 2,
     default: 0.0,
   })
-  price: number;
+  price!: number;
 
   @Column({
     name: 'duration_minutes',
@@ -34,20 +34,20 @@ export class Service {
     unsigned: true,
     default: 30,
   })
-  durationMinutes: number;
+  durationMinutes!: number;
 
   @Column({ name: 'is_active', type: 'boolean', default: true })
-  isActive: boolean;
+  isActive!: boolean;
 
   @CreateDateColumn({ name: 'created_at' })
-  createdAt: Date;
+  createdAt!: Date;
 
   @UpdateDateColumn({ name: 'updated_at' })
-  updatedAt: Date;
+  updatedAt!: Date;
 
   @OneToMany(() => StaffService, (staffService) => staffService.service)
-  staffs: StaffService[];
+  staffs!: StaffService[];
 
   @OneToMany(() => Appointment, (appointment) => appointment.service)
-  appointments: Appointment[];
+  appointments!: Appointment[];
 }

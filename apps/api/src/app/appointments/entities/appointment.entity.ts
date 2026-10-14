@@ -21,29 +21,29 @@ import { AppointmentLog } from './appointment-log.entity';
 @Index('idx_customer_appointments', ['customerId', 'startTime'])
 export class Appointment {
   @PrimaryGeneratedColumn({ type: 'bigint', unsigned: true })
-  id: string;
+  id!: string;
 
   @Column({ name: 'customer_id', type: 'bigint', unsigned: true })
-  customerId: string;
+  customerId!: string;
 
   @Column({ name: 'staff_id', type: 'bigint', unsigned: true })
-  staffId: string;
+  staffId!: string;
 
   @Column({ name: 'service_id', type: 'bigint', unsigned: true })
-  serviceId: string;
+  serviceId!: string;
 
   @Column({ name: 'start_time', type: 'datetime' })
-  startTime: Date;
+  startTime!: Date;
 
   @Column({ name: 'end_time', type: 'datetime' })
-  endTime: Date;
+  endTime!: Date;
 
   @Column({
     type: 'enum',
     enum: AppointmentStatus,
     default: AppointmentStatus.PENDING,
   })
-  status: AppointmentStatus;
+  status!: AppointmentStatus;
 
   @Column({
     type: 'decimal',
@@ -51,35 +51,35 @@ export class Appointment {
     scale: 2,
     default: 0.0,
   })
-  price: number;
+  price!: number;
 
   @Column({ type: 'varchar', length: 500, nullable: true })
-  notes: string | null;
+  notes!: string | null;
 
   @CreateDateColumn({ name: 'created_at' })
-  createdAt: Date;
+  createdAt!: Date;
 
   @UpdateDateColumn({ name: 'updated_at' })
-  updatedAt: Date;
+  updatedAt!: Date;
 
   @ManyToOne(() => Customer, (customer) => customer.appointments, {
     onDelete: 'RESTRICT',
   })
   @JoinColumn({ name: 'customer_id' })
-  customer: Customer;
+  customer!: Customer;
 
   @ManyToOne(() => User, (user) => user.appointments, {
     onDelete: 'RESTRICT',
   })
   @JoinColumn({ name: 'staff_id' })
-  staff: User;
+  staff!: User;
 
   @ManyToOne(() => Service, (service) => service.appointments, {
     onDelete: 'RESTRICT',
   })
   @JoinColumn({ name: 'service_id' })
-  service: Service;
+  service!: Service;
 
   @OneToMany(() => AppointmentLog, (log) => log.appointment)
-  logs: AppointmentLog[];
+  logs!: AppointmentLog[];
 }

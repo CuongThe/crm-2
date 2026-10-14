@@ -12,33 +12,33 @@ import { User } from '../../users/entities/user.entity';
 @Entity('appointment_logs')
 export class AppointmentLog {
   @PrimaryGeneratedColumn({ type: 'bigint', unsigned: true })
-  id: string;
+  id!: string;
 
   @Column({ name: 'appointment_id', type: 'bigint', unsigned: true })
-  appointmentId: string;
+  appointmentId!: string;
 
   @Column({ type: 'varchar', length: 50 })
-  action: string;
+  action!: string;
 
   @Column({ type: 'text', nullable: true })
-  note: string | null;
+  note!: string | null;
 
   @Column({ name: 'created_by', type: 'bigint', unsigned: true, nullable: true })
-  createdBy: string | null;
+  createdBy!: string | null;
 
   @CreateDateColumn({ name: 'created_at' })
-  createdAt: Date;
+  createdAt!: Date;
 
   @ManyToOne(() => Appointment, (appointment) => appointment.logs, {
     onDelete: 'CASCADE',
   })
   @JoinColumn({ name: 'appointment_id' })
-  appointment: Appointment;
+  appointment!: Appointment;
 
   @ManyToOne(() => User, (user) => user.appointmentLogs, {
     onDelete: 'SET NULL',
     nullable: true,
   })
   @JoinColumn({ name: 'created_by' })
-  creator: User | null;
+  creator!: User | null;
 }

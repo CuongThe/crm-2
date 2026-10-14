@@ -4,7 +4,7 @@ import { AppointmentStatus } from '../../common/enums';
 export class UpdateAppointmentStatusDto {
   @IsEnum(AppointmentStatus, { message: 'Trạng thái không hợp lệ' })
   @IsNotEmpty({ message: 'status không được để trống' })
-  status: AppointmentStatus;
+  status!: AppointmentStatus;
 
   @IsOptional()
   @IsString()

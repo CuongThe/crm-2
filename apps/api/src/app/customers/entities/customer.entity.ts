@@ -15,25 +15,25 @@ import { Appointment } from '../../appointments/entities/appointment.entity';
 @Index('idx_customers_name', ['fullName'])
 export class Customer {
   @PrimaryGeneratedColumn({ type: 'bigint', unsigned: true })
-  id: string;
+  id!: string;
 
   @Column({ name: 'full_name', type: 'varchar', length: 100 })
-  fullName: string;
+  fullName!: string;
 
   @Column({ type: 'varchar', length: 20, unique: true })
-  phone: string;
+  phone!: string;
 
   @Column({ type: 'varchar', length: 150, nullable: true })
-  email: string | null;
+  email!: string | null;
 
   @Column({ type: 'enum', enum: Gender, default: Gender.OTHER })
-  gender: Gender;
+  gender!: Gender;
 
   @Column({ type: 'date', nullable: true })
-  dob: Date | null;
+  dob!: Date | null;
 
   @Column({ type: 'text', nullable: true })
-  notes: string | null;
+  notes!: string | null;
 
   @Column({
     name: 'total_spent',
@@ -42,17 +42,17 @@ export class Customer {
     scale: 2,
     default: 0.0,
   })
-  totalSpent: number;
+  totalSpent!: number;
 
   @Column({ name: 'visit_count', type: 'int', unsigned: true, default: 0 })
-  visitCount: number;
+  visitCount!: number;
 
   @CreateDateColumn({ name: 'created_at' })
-  createdAt: Date;
+  createdAt!: Date;
 
   @UpdateDateColumn({ name: 'updated_at' })
-  updatedAt: Date;
+  updatedAt!: Date;
 
   @OneToMany(() => Appointment, (appointment) => appointment.customer)
-  appointments: Appointment[];
+  appointments!: Appointment[];
 }

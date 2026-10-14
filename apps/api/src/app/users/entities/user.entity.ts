@@ -14,38 +14,38 @@ import { AppointmentLog } from '../../appointments/entities/appointment-log.enti
 @Entity('users')
 export class User {
   @PrimaryGeneratedColumn({ type: 'bigint', unsigned: true })
-  id: string;
+  id!: string;
 
   @Column({ type: 'varchar', length: 150, unique: true })
-  email: string;
+  email!: string;
 
   @Column({ name: 'password_hash', type: 'varchar', length: 255 })
-  passwordHash: string;
+  passwordHash!: string;
 
   @Column({ name: 'full_name', type: 'varchar', length: 100 })
-  fullName: string;
+  fullName!: string;
 
   @Column({ type: 'varchar', length: 20, nullable: true })
-  phone: string | null;
+  phone!: string | null;
 
   @Column({ type: 'enum', enum: Role, default: Role.STAFF })
-  role: Role;
+  role!: Role;
 
   @Column({ name: 'is_active', type: 'boolean', default: true })
-  isActive: boolean;
+  isActive!: boolean;
 
   @CreateDateColumn({ name: 'created_at' })
-  createdAt: Date;
+  createdAt!: Date;
 
   @UpdateDateColumn({ name: 'updated_at' })
-  updatedAt: Date;
+  updatedAt!: Date;
 
   @OneToMany(() => StaffService, (staffService) => staffService.user)
-  services: StaffService[];
+  services!: StaffService[];
 
   @OneToMany(() => Appointment, (appointment) => appointment.staff)
-  appointments: Appointment[];
+  appointments!: Appointment[];
 
   @OneToMany(() => AppointmentLog, (log) => log.creator)
-  appointmentLogs: AppointmentLog[];
+  appointmentLogs!: AppointmentLog[];
 }

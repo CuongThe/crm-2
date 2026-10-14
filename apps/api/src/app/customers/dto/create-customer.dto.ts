@@ -11,11 +11,11 @@ import { Gender } from '../../common/enums';
 export class CreateCustomerDto {
   @IsString()
   @IsNotEmpty({ message: 'Họ tên khách hàng không được để trống' })
-  fullName: string;
+  fullName!: string;
 
   @IsString()
   @Matches(/^[0-9]{10,11}$/, { message: 'Số điện thoại phải từ 10-11 chữ số' })
-  phone: string;
+  phone!: string;
 
   @IsOptional()
   @IsEmail({}, { message: 'Email không đúng định dạng' })
