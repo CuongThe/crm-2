@@ -5,6 +5,7 @@ import {
   CreateDateColumn,
   ManyToOne,
   JoinColumn,
+  type Relation,
 } from 'typeorm';
 import { Appointment } from './appointment.entity';
 import { User } from '../../users/entities/user.entity';
@@ -33,12 +34,12 @@ export class AppointmentLog {
     onDelete: 'CASCADE',
   })
   @JoinColumn({ name: 'appointment_id' })
-  appointment!: Appointment;
+  appointment!: Relation<Appointment>;
 
   @ManyToOne(() => User, (user) => user.appointmentLogs, {
     onDelete: 'SET NULL',
     nullable: true,
   })
   @JoinColumn({ name: 'created_by' })
-  creator!: User | null;
+  creator!: Relation<User> | null;
 }

@@ -18,6 +18,7 @@
     "target": "es2022",
     "customConditions": ["@crm-2/source"],
     "paths": {
+      "@frontend/common": ["./libs/frontend/common/src/index.ts"],
       "@crm-2/shared-types": ["./libs/shared/types/src/index.ts"],
       "@crm-2/shared/types": ["./libs/shared/types/src/index.ts"],
       "@crm-2/data-access": ["./libs/web/data-access/src/index.ts"],

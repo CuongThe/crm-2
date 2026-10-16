@@ -8,6 +8,7 @@ import {
   ManyToOne,
   OneToMany,
   JoinColumn,
+  type Relation,
 } from 'typeorm';
 import { AppointmentStatus } from '../../common/enums';
 import { Customer } from '../../customers/entities/customer.entity';
@@ -66,20 +67,20 @@ export class Appointment {
     onDelete: 'RESTRICT',
   })
   @JoinColumn({ name: 'customer_id' })
-  customer!: Customer;
+  customer!: Relation<Customer>;
 
   @ManyToOne(() => User, (user) => user.appointments, {
     onDelete: 'RESTRICT',
   })
   @JoinColumn({ name: 'staff_id' })
-  staff!: User;
+  staff!: Relation<User>;
 
   @ManyToOne(() => Service, (service) => service.appointments, {
     onDelete: 'RESTRICT',
   })
   @JoinColumn({ name: 'service_id' })
-  service!: Service;
+  service!: Relation<Service>;
 
   @OneToMany(() => AppointmentLog, (log) => log.appointment)
-  logs!: AppointmentLog[];
+  logs!: Relation<AppointmentLog>[];
 }

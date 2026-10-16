@@ -5,6 +5,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   OneToMany,
+  type Relation,
 } from 'typeorm';
 import { Role } from '../../common/enums';
 import { StaffService } from '../../services/entities/staff-service.entity';
@@ -41,11 +42,11 @@ export class User {
   updatedAt!: Date;
 
   @OneToMany(() => StaffService, (staffService) => staffService.user)
-  services!: StaffService[];
+  services!: Relation<StaffService>[];
 
   @OneToMany(() => Appointment, (appointment) => appointment.staff)
-  appointments!: Appointment[];
+  appointments!: Relation<Appointment>[];
 
   @OneToMany(() => AppointmentLog, (log) => log.creator)
-  appointmentLogs!: AppointmentLog[];
+  appointmentLogs!: Relation<AppointmentLog>[];
 }

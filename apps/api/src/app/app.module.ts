@@ -10,6 +10,7 @@ import { UsersModule } from './users/users.module';
 import { ServicesModule } from './services/services.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { RevenueModule } from './revenue/revenue.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { RevenueModule } from './revenue/revenue.module';
     ServicesModule,
     DashboardModule,
     RevenueModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

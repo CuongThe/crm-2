@@ -5,6 +5,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   OneToMany,
+  type Relation,
 } from 'typeorm';
 import { StaffService } from './staff-service.entity';
 import { Appointment } from '../../appointments/entities/appointment.entity';
@@ -46,8 +47,8 @@ export class Service {
   updatedAt!: Date;
 
   @OneToMany(() => StaffService, (staffService) => staffService.service)
-  staffs!: StaffService[];
+  staffs!: Relation<StaffService>[];
 
   @OneToMany(() => Appointment, (appointment) => appointment.service)
-  appointments!: Appointment[];
+  appointments!: Relation<Appointment>[];
 }

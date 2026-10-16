@@ -16,5 +16,8 @@
   "nx": {
     "name": "data-access"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "peerDependencies": {
+    "next": "^16.0.0"
+  }
 }

@@ -113,3 +113,36 @@ export interface RevenueReportResponse {
   serviceStats: ServiceRevenueItem[];
   appointments: RevenueAppointmentItem[];
 }
+
+export interface AuthUser {
+  id: string;
+  email: string;
+  fullName: string;
+  role: 'ADMIN' | 'STAFF';
+  phone?: string | null;
+  isActive?: boolean;
+}
+
+export interface LoginResponse {
+  accessToken: string;
+  user: AuthUser;
+}
+
+import { z } from 'zod';
+
+export const LoginSchema = z.object({
+  email: z.string().email('Email không đúng định dạng'),
+  password: z.string().min(6, 'Mật khẩu phải từ 6 ký tự trở lên'),
+});
+
+export const RegisterSchema = z.object({
+  email: z.string().email('Email không đúng định dạng'),
+  password: z.string().min(6, 'Mật khẩu phải từ 6 ký tự trở lên'),
+  fullName: z.string().min(2, 'Họ tên phải từ 2 ký tự trở lên'),
+  phone: z.string().optional(),
+  role: z.enum(['ADMIN', 'STAFF']).default('STAFF'),
+});
+
+export type LoginInput = z.infer<typeof LoginSchema>;
+export type RegisterInput = z.infer<typeof RegisterSchema>;
+

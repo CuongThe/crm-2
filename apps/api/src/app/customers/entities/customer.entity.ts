@@ -6,6 +6,7 @@ import {
   UpdateDateColumn,
   Index,
   OneToMany,
+  type Relation,
 } from 'typeorm';
 import { Gender } from '../../common/enums';
 import { Appointment } from '../../appointments/entities/appointment.entity';
@@ -54,5 +55,5 @@ export class Customer {
   updatedAt!: Date;
 
   @OneToMany(() => Appointment, (appointment) => appointment.customer)
-  appointments!: Appointment[];
+  appointments!: Relation<Appointment>[];
 }

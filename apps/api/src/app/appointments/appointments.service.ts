@@ -21,8 +21,6 @@ export class AppointmentsService {
   constructor(
     @InjectRepository(Appointment)
     private readonly appointmentRepository: Repository<Appointment>,
-    @InjectRepository(AppointmentLog)
-    private readonly logRepository: Repository<AppointmentLog>,
     @InjectRepository(Customer)
     private readonly customerRepository: Repository<Customer>,
     @InjectRepository(User)

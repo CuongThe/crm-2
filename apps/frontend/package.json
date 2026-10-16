@@ -1,0 +1,22 @@
+{
+  "name": "@crm-2/frontend",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "sourceRoot": "apps/frontend/src",
+    "targets": {
+      "serve": {
+        "executor": "nx:run-commands",
+        "options": {
+          "cwd": "apps/frontend",
+          "command": "next dev -p 4000"
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "next": "~16.1.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}
