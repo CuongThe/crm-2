@@ -28,7 +28,7 @@ function isTokenValid(token?: string | null): boolean {
   }
 }
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const rawAccessToken = request.cookies.get('accessToken')?.value;
   const hasValidToken = isTokenValid(rawAccessToken);
   const shouldPurgeLegacy = request.cookies.has('session_token');
